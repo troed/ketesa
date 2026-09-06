@@ -23,8 +23,8 @@ describe("splitMxid", () => {
     ["@name:localhost", { name: "name", domain: "localhost" }],
     ["@name:localhost:8448", { name: "name", domain: "localhost:8448" }],
     // valid — IPv4
-    ["@name:192.168.1.1", { name: "name", domain: "192.168.1.1" }],
-    ["@name:192.168.1.1:8448", { name: "name", domain: "192.168.1.1:8448" }],
+    ["@name:192.0.2.1", { name: "name", domain: "192.0.2.1" }],
+    ["@name:192.0.2.1:8448", { name: "name", domain: "192.0.2.1:8448" }],
     // valid — IPv6
     ["@name:[::1]", { name: "name", domain: "[::1]" }],
     ["@name:[::1]:8448", { name: "name", domain: "[::1]:8448" }],
@@ -48,8 +48,8 @@ describe("isValidBaseUrl", () => {
     ["https://foo.bar/", true],
     ["https://foo.bar:1234/", true],
     // valid — IPv4
-    ["http://192.168.1.1", true],
-    ["https://192.168.1.1:8448", true],
+    ["http://192.0.2.1", true],
+    ["https://192.0.2.1:8448", true],
     // valid — IPv6
     ["http://[::1]", true],
     ["https://[::1]", true],

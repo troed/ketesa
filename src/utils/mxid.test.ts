@@ -36,11 +36,11 @@ describe("mxid utils", () => {
       });
 
       it("accepts an IPv4 server name", () => {
-        expect(isMXID("@alice:192.168.1.1")).toBe(true);
+        expect(isMXID("@alice:192.0.2.1")).toBe(true);
       });
 
       it("accepts an IPv4 server name with port", () => {
-        expect(isMXID("@alice:192.168.1.1:8448")).toBe(true);
+        expect(isMXID("@alice:192.0.2.1:8448")).toBe(true);
       });
 
       it("accepts an IPv6 server name (loopback)", () => {
@@ -121,7 +121,7 @@ describe("mxid utils", () => {
     });
 
     it("extracts localpart from a MXID with IPv4 server", () => {
-      expect(getLocalpart("@alice:192.168.1.1:8448")).toBe("alice");
+      expect(getLocalpart("@alice:192.0.2.1:8448")).toBe("alice");
     });
 
     it("extracts localpart from a MXID with IPv6 server", () => {
@@ -161,8 +161,8 @@ describe("mxid utils", () => {
     });
 
     it("returns an already-valid MXID unchanged (IPv4 with port)", () => {
-      localStorage.setItem("home_server", "192.168.1.1:8448");
-      expect(returnMXID("@alice:192.168.1.1:8448")).toBe("@alice:192.168.1.1:8448");
+      localStorage.setItem("home_server", "192.0.2.1:8448");
+      expect(returnMXID("@alice:192.0.2.1:8448")).toBe("@alice:192.0.2.1:8448");
     });
 
     it("returns an already-valid MXID unchanged (IPv6 with port)", () => {
@@ -181,8 +181,8 @@ describe("mxid utils", () => {
     });
 
     it("builds a MXID from a bare localpart when homeserver is IPv4 with port", () => {
-      localStorage.setItem("home_server", "192.168.1.1:8448");
-      expect(returnMXID("alice")).toBe("@alice:192.168.1.1:8448");
+      localStorage.setItem("home_server", "192.0.2.1:8448");
+      expect(returnMXID("alice")).toBe("@alice:192.0.2.1:8448");
     });
 
     it("builds a MXID from a bare localpart when homeserver is IPv6", () => {
